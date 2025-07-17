@@ -1,0 +1,10 @@
+# Ignore Meteor's local build directory
+.meteor/local
+
+# Ignore Node.js dependency modules
+node_modules/
+
+# Ignore editor and OS-specific files
+.vscode/
+.DS_Store
+*.swp
