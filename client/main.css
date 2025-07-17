@@ -27,8 +27,14 @@ body {
   text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
 }
 
+.header nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
 .header nav a {
-  margin: 0 1rem;
+  margin: 0;
   text-decoration: none;
   color: white;
   padding: 10px 20px;
@@ -50,6 +56,27 @@ body {
 .header nav a:active {
   top: 4px;
   box-shadow: 0 0 #3e5a99;
+}
+
+.header .sidebar-button {
+    color: white;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+    background: linear-gradient(45deg, #ff8c00, #f44336);
+    border: none;
+    box-shadow: 0 4px #c33124;
+    margin-bottom: 0;
+}
+
+.header .sidebar-button:hover {
+    background: linear-gradient(45deg, #f58300, #e5392c);
+    transform: translateY(2px);
+    box-shadow: 0 2px #c33124;
+}
+
+.header .sidebar-button:active {
+    transform: translateY(4px);
+    box-shadow: 0 0 #c33124;
 }
 
 .header .user-profile {
@@ -100,6 +127,55 @@ body {
     transform: translateX(5px);
 }
 
+.sidebar .sidebar-button {
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(45deg, #007bff, #6f42c1);
+    border: none;
+    box-shadow: 0 4px #5a329a;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+    margin-bottom: 10px; /* Add margin back for sidebar buttons */
+}
+
+.sidebar .sidebar-button:hover {
+    background: linear-gradient(45deg, #0069d9, #6238aa);
+    transform: translateY(2px);
+    box-shadow: 0 2px #5a329a;
+}
+
+.sidebar .sidebar-button:active {
+    transform: translateY(4px);
+    box-shadow: 0 0 #5a329a;
+}
+
+.sidebar-button {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #333;
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    box-shadow: 0 4px #ced4da;
+    transition: all 0.15s ease-out;
+    text-align: center;
+}
+
+.header .sidebar-button {
+    margin-bottom: 0;
+}
+
+.sidebar-button:hover {
+    background-color: #e9ecef;
+    transform: translateY(2px);
+    box-shadow: 0 2px #ced4da;
+}
+
+.sidebar-button:active {
+    transform: translateY(4px);
+    box-shadow: 0 0 #ced4da;
+}
+
 .main-content {
   flex: 1;
   padding: 2rem;
@@ -111,6 +187,32 @@ body {
     padding: 2rem;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    text-align: center; /* Center the text */
+}
+
+.main-content .welcome-title {
+    font-size: 3rem;
+    font-weight: bold;
+    background: -webkit-linear-gradient(45deg, #4b6cb7, #182848);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1rem;
+}
+
+.main-content .welcome-subtitle {
+    font-size: 1.5rem;
+    color: #d9534f; /* A soft red color */
+    margin-bottom: 2rem;
+}
+
+.main-content .welcome-tagline {
+    font-size: 1.2rem;
+    font-style: italic;
+    color: #5cb85c; /* A pleasant green color */
+    padding: 1rem;
+    border-top: 1px solid #eee;
+    display: inline-block;
 }
 
 .footer {
@@ -188,4 +290,201 @@ body {
     font-style: italic;
     color: #777;
     margin-top: 2rem;
+}
+
+/* Admin Panel Styles */
+.admin-panel {
+    flex: 1; /* Make the panel fill the available space */
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    color: white;
+    padding: 2.5rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.admin-panel .admin-header h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    margin-bottom: 0.5rem;
+    background: -webkit-linear-gradient(45deg, #ffc107, #ff8c00);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.admin-panel .admin-header .admin-user-role {
+    font-size: 1.5rem;
+    font-style: italic;
+    color: #ffc107;
+    margin-bottom: 2rem;
+    letter-spacing: 1px;
+}
+
+.admin-panel .admin-content {
+    font-size: 1.2rem;
+    line-height: 1.7;
+    max-width: 1200px; /* Increased max-width */
+    margin: 0 auto;
+    text-align: left; /* Left-align content */
+}
+
+.admin-section {
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 2rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+}
+
+.admin-section h2 {
+    font-size: 1.8rem;
+    color: #ffc107;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 0.5rem;
+}
+
+.admin-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.admin-form.horizontal-form {
+    flex-direction: row;
+    align-items: flex-end;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    flex: 1; /* Allow form groups to grow */
+}
+
+.form-group label {
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: #f0f2f5;
+}
+
+.form-group input {
+    padding: 12px;
+    border-radius: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: rgba(0, 0, 0, 0.2);
+    color: white;
+    font-size: 1rem;
+}
+
+.admin-button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    background: linear-gradient(45deg, #ffc107, #ff8c00);
+    color: #1e3c72;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    align-self: flex-start;
+    white-space: nowrap; /* Prevent button text from wrapping */
+}
+
+.admin-form.horizontal-form .admin-button {
+    align-self: flex-end;
+}
+
+.admin-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.admin-button.danger {
+    background: linear-gradient(45deg, #dc3545, #c82333);
+    color: white;
+}
+
+.users-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.users-table th, .users-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.users-table th {
+    background-color: rgba(255, 255, 255, 0.1);
+    font-size: 1.1rem;
+    color: #ffc107;
+}
+
+.users-table tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Matrix Display Styles */
+.matrix-display {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.matrix-display h2 {
+    color: white;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.matrix-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.matrix-layer {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 1rem;
+    backdrop-filter: blur(4px);
+}
+
+.matrix-layer h3 {
+    color: #ffc107;
+    margin-bottom: 1rem;
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+.matrix-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+
+.matrix-cell {
+    padding: 8px 12px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #333;
+    font-weight: bold;
+    min-width: 40px;
+    font-size: 0.9rem;
+}
+
+.matrix-cell:hover {
+    background: rgba(255, 255, 255, 1);
+    transform: scale(1.05);
+    transition: all 0.2s ease;
 }

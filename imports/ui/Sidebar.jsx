@@ -1,12 +1,12 @@
 import React from 'react';
 
-export const Sidebar = () => (
+export const Sidebar = ({ onAdminClick }) => (
   <aside className="sidebar">
     <ul>
-      <li><a href="#">Home</a></li>
-      <li><a href="#">About</a></li>
-      <li><a href="#">Services</a></li>
-      <li><a href="#">Contact</a></li>
+      <li><a href="#" className="sidebar-button" onClick={(e) => { e.preventDefault(); onAdminClick(); }}>Admin</a></li>
+      <li><a href="#" className="sidebar-button">About</a></li>
+      <li><a href="#" className="sidebar-button">Services</a></li>
+      <li><a href="#" className="sidebar-button">Contact</a></li>
     </ul>
   </aside>
 );
