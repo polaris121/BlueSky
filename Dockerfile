@@ -1,42 +1,42 @@
-# Stage 1: Build the application
-FROM node:20 AS builder
+# Use a single, consistent stage to eliminate multi-stage complexities.
+FROM node:20
+
+# Set up the working directory
+WORKDIR /usr/src/app
 
 # Install Meteor
 RUN npm install -g meteor --unsafe-perm
 
-# Create app directory
-WORKDIR /usr/src/app
-
-# Copy application source
-# We copy package.json first to leverage Docker layer caching
+# Copy package files and install dependencies to leverage caching
 COPY package*.json ./
-RUN meteor npm install
+RUN meteor npm install --save
+# Explicitly install @babel/runtime as suggested by Render logs for robustness
+RUN meteor npm install --save @babel/runtime
 
+# Copy the rest of the application source
 COPY . .
 
-# Build the app, creating a bundle in /usr/src/app/build
+# Build the application. This creates the bundle in /usr/src/app/build
 RUN meteor build --directory ./build --architecture os.linux.x86_64
 
-# Install production server dependencies within the builder stage itself
-RUN (cd ./build/bundle/programs/server && npm install --production)
+# --- Runtime Setup ---
 
-# Stage 2: Create the final, smaller runtime image
-FROM node:20-slim
+# Set the working directory to the bundled app's root
+WORKDIR /usr/src/app/build/bundle
 
-# Create app directory
-WORKDIR /usr/src/app
+# Install server dependencies directly into the final location.
+# This is the most critical step.
+RUN (cd programs/server && npm install --production --unsafe-perm)
 
-# Copy the fully prepared bundle (with node_modules already installed) from the builder stage
-COPY --from=builder /usr/src/app/build/bundle .
-
-# Expose the port the app runs on
-EXPOSE 3000
-
-# Set environment variables
+# Set environment variables for runtime
 # ROOT_URL and MONGO_URL should be set in Render's environment
 ENV PORT=3000
-# Explicitly set NODE_PATH to help Node find the modules, just in case.
-ENV NODE_PATH=./programs/server/node_modules
+ENV NODE_ENV=production
+# Use an absolute path for NODE_PATH to be explicit.
+ENV NODE_PATH=/usr/src/app/build/bundle/programs/server/node_modules
 
-# Start the app
+# Expose the port
+EXPOSE 3000
+
+# The command to start the application
 CMD ["node", "main.js"]
