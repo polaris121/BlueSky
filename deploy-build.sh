@@ -12,8 +12,12 @@ export PATH="$HOME/.meteor:$PATH"
 echo "Installing npm dependencies..."
 meteor npm install
 
-# Build the application
+# Build the application into a 'build' directory in the repo root
 echo "Building Meteor application..."
-meteor build --directory /opt/render/build --architecture os.linux.x86_64
+meteor build --directory ./build --architecture os.linux.x86_64
+
+# Install server dependencies directly into the bundle
+echo "Installing server dependencies into the bundle..."
+(cd ./build/bundle/programs/server && npm install --production)
 
 echo "=== Build completed successfully ==="

@@ -9,7 +9,7 @@ services:
       - key: PORT
         value: 10000
       - key: ROOT_URL
-        value: https://your-app-name.onrender.com
+        value: https://meteor-app.onrender.com
       - key: NODE_ENV
         value: production
     # Note: Add MONGO_URL in Render dashboard with actual MongoDB Atlas connection string
