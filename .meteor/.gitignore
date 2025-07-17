@@ -1,0 +1,8 @@
+# Top-level files to exclude from the app bundle, as a list of regular expressions.
+#
+# These are NOT file paths. Anchoring ^ and $ to match the beginning
+# and end of the bare filename is recommended.
+
+# App specific excludes
+
+node_modules/

@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: meteor-app
+    env: node
+    plan: free
+    buildCommand: npm run build
+    startCommand: npm run start-production
+    envVars:
+      - key: PORT
+        value: 10000
+      - key: ROOT_URL
+        value: https://your-app-name.onrender.com
+      - key: NODE_ENV
+        value: production
+    # Note: Add MONGO_URL in Render dashboard with actual MongoDB Atlas connection string
