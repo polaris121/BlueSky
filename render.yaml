@@ -13,3 +13,15 @@ services:
       - key: NODE_ENV
         value: production
     # Note: Add MONGO_URL in Render dashboard with actual MongoDB Atlas connection string
+    buildFilter:
+      paths:
+      - "client/**"
+      - "imports/**"
+      - "server/**"
+      - "package.json"
+      - "package-lock.json"
+      - ".meteor/**"
+      - "deploy-build.sh"
+      - "deploy-start.sh"
+      ignoredPaths:
+      - "README.md"
